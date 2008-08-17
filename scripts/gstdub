@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+
+from nigelsim.gstdub import gui
+if __name__=='__main__':
+    print "Starting"
+    m = gui.MainWindow()
+    m.main()
+

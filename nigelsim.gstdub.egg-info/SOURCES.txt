@@ -1,0 +1,14 @@
+README.txt
+setup.cfg
+setup.py
+nigelsim/__init__.py
+nigelsim.gstdub.egg-info/PKG-INFO
+nigelsim.gstdub.egg-info/SOURCES.txt
+nigelsim.gstdub.egg-info/dependency_links.txt
+nigelsim.gstdub.egg-info/entry_points.txt
+nigelsim.gstdub.egg-info/namespace_packages.txt
+nigelsim.gstdub.egg-info/not-zip-safe
+nigelsim.gstdub.egg-info/requires.txt
+nigelsim.gstdub.egg-info/top_level.txt
+nigelsim/gstdub/__init__.py
+scripts/gstdub
