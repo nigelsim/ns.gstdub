@@ -40,7 +40,7 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkFileChooserButton" id="outputFile">
+              <widget class="GtkFileChooserButton" id="inputFile">
                 <property name="visible">True</property>
               </widget>
               <packing>
@@ -49,7 +49,7 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkFileChooserButton" id="inputFile">
+              <widget class="GtkFileChooserButton" id="outputFile">
                 <property name="visible">True</property>
                 <property name="do_overwrite_confirmation">True</property>
                 <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
