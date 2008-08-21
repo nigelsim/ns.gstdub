@@ -52,7 +52,7 @@
               <widget class="GtkFileChooserButton" id="outputFile">
                 <property name="visible">True</property>
                 <property name="do_overwrite_confirmation">True</property>
-                <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
+                <property name="action">FILE_CHOOSER_ACTION_SAVE</property>
               </widget>
               <packing>
                 <property name="left_attach">1</property>
@@ -88,6 +88,7 @@
                 <property name="receives_default">True</property>
                 <property name="label" translatable="yes">Dub</property>
                 <property name="response_id">0</property>
+                <signal name="clicked" handler="on_cmdDub_clicked"/>
               </widget>
               <packing>
                 <property name="position">1</property>

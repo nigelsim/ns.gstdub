@@ -1,3 +1,5 @@
+import os
+
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -91,9 +93,20 @@ class MainWindow:
     def on_cmdStartStop_clicked(self, widget):
         inFile = self.inputFile.get_filename()
         outFile = self.outputFile.get_filename()
+        if inFile:
+            toPlay = outFile and os.path.exists(outFile) and outFile \
+                or inFile
+            self.player.set_property('uri', 'file:///%s'%toPlay)
+            self.player.set_state(gst.STATE_PLAYING)
+        else:
+            print "Either the input or output was blank"
+
+    def on_cmdDub_clicked(self, widget):
+        inFile = self.inputFile.get_filename()
+        outFile = self.outputFile.get_filename()
         if inFile and outFile:
             self.player.set_property('uri', 'file:///%s'%inFile)
-            self.recorder.set_property('location', outFile)
+            self.output.set_property('location', outFile)
             self.player.set_state(gst.STATE_PLAYING)
             self.recorder.set_state(gst.STATE_PLAYING)
         else:
