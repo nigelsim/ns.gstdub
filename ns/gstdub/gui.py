@@ -62,8 +62,6 @@ class MainWindow:
         s = 'alsasrc ! level message=true ! audioconvert ! wavenc ! filesink'
         self.recorder = gst.parse_launch(s)
         self.output = self.recorder.get_by_name('filesink0')
-        self.output.set_property('location','/tmp/output.wav')
-        import ipdb; ipdb.set_trace()
 
     def on_sync_message(self, bus, message):
         if message.structure is None:
@@ -91,10 +89,15 @@ class MainWindow:
         gtk.main()
 
     def on_cmdStartStop_clicked(self, widget):
-        print "Start"
-        self.player.set_property('uri', 'file:///home/nigel/test.ogg')
-        self.player.set_state(gst.STATE_PLAYING)
-        self.recorder.set_state(gst.STATE_PLAYING)
+        inFile = self.inputFile.get_filename()
+        outFile = self.outputFile.get_filename()
+        if inFile and outFile:
+            self.player.set_property('uri', 'file:///%s'%inFile)
+            self.recorder.set_property('location', outFile)
+            self.player.set_state(gst.STATE_PLAYING)
+            self.recorder.set_state(gst.STATE_PLAYING)
+        else:
+            print "Either the input or output was blank"
 
     def on_cmdQuit_clicked(self, widget):
         print "Quit"
