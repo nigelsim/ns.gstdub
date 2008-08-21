@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sun Aug 17 22:47:41 2008 -->
+<!--Generated with glade3 3.4.5 on Thu Aug 21 21:54:20 2008 -->
 <glade-interface>
   <widget class="GtkDialog" id="MainWindow">
     <property name="border_width">5</property>
@@ -12,30 +12,20 @@
         <property name="visible">True</property>
         <property name="spacing">2</property>
         <child>
+          <placeholder/>
+        </child>
+        <child>
           <widget class="GtkTable" id="table1">
             <property name="visible">True</property>
             <property name="n_rows">2</property>
             <property name="n_columns">2</property>
             <child>
-              <widget class="GtkFileChooserButton" id="inputFile">
+              <widget class="GtkLabel" id="label1">
                 <property name="visible">True</property>
-                <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
-                <property name="do_overwrite_confirmation">True</property>
+                <property name="label" translatable="yes">Input video file</property>
               </widget>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkFileChooserButton" id="outputFile">
-                <property name="visible">True</property>
-              </widget>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
+                <property name="x_options">GTK_FILL</property>
               </packing>
             </child>
             <child>
@@ -50,18 +40,31 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkLabel" id="label1">
+              <widget class="GtkFileChooserButton" id="outputFile">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">Input video file</property>
               </widget>
               <packing>
-                <property name="x_options">GTK_FILL</property>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkFileChooserButton" id="inputFile">
+                <property name="visible">True</property>
+                <property name="do_overwrite_confirmation">True</property>
+                <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
+              </widget>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
               </packing>
             </child>
           </widget>
           <packing>
             <property name="expand">False</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child internal-child="action_area">
@@ -73,10 +76,22 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="label" translatable="yes">Start</property>
+                <property name="label" translatable="yes">Play</property>
                 <property name="response_id">0</property>
                 <signal name="clicked" handler="on_cmdStartStop_clicked"/>
               </widget>
+            </child>
+            <child>
+              <widget class="GtkButton" id="cmdDub">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="label" translatable="yes">Dub</property>
+                <property name="response_id">0</property>
+              </widget>
+              <packing>
+                <property name="position">1</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkButton" id="cmdQuit">
@@ -89,7 +104,7 @@
                 <signal name="clicked" handler="on_cmdQuit_clicked"/>
               </widget>
               <packing>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </widget>
