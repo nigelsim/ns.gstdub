@@ -8,7 +8,7 @@ pygst.require('0.10')
 import gst
 import gst.interfaces
 
-import nigelsim.gstdub
+import ns.gstdub
 
 class VideoWidget(gtk.DrawingArea):
     def __init__(self):
@@ -32,7 +32,7 @@ gobject.type_register(VideoWidget)
 class MainWindow:
     def __init__(self):
         # Load the glade
-        gladefile = nigelsim.gstdub.__file__[:-12] + 'main.glade'
+        gladefile = ns.gstdub.__file__[:-12] + 'main.glade'
         self.wTree = gtk.glade.XML(gladefile) 
         self.wTree.signal_autoconnect(self)
         self.window = self.wTree.get_widget('MainWindow')

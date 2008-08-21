@@ -3,7 +3,7 @@ import os
 
 version = '1.0'
 
-setup(name='nigelsim.gstdub',
+setup(name='ns.gstdub',
       version=version,
       description="",
       long_description=open("README.txt").read() + "\n" +
@@ -19,7 +19,7 @@ setup(name='nigelsim.gstdub',
       url='',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['nigelsim'],
+      namespace_packages=['ns'],
       include_package_data=True,
       zip_safe=False,
       scripts=['scripts/gstdub'],
