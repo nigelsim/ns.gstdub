@@ -61,9 +61,21 @@ class MainWindow:
         self._setup_recorder()
 
     def _setup_recorder(self):
-        s = 'alsasrc ! level message=true ! audioconvert ! wavenc ! filesink'
+        #s = 'alsasrc ! level message=true ! audioconvert ! wavenc ! filesink'
+        s = """filesrc ! decodebin ! tee name="videotee" silent="false"
+        videotee. ! queue ! ffmpegcolorspace ! theoraenc quality=32 ! oggmux name=mux ! filesink \
+        videotee. ! queue ! ffmpegcolorspace ! ximagesink \
+        alsasrc ! level message=true ! queue ! audioconvert ! vorbisenc ! queue ! mux."""
         self.recorder = gst.parse_launch(s)
+        self.input = self.recorder.get_by_name('filesrc0')
         self.output = self.recorder.get_by_name('filesink0')
+
+        # Setup notification
+        bus = self.recorder.get_bus()
+        bus.enable_sync_message_emission()
+        bus.add_signal_watch()
+        bus.connect('sync-message::element', self.on_sync_message)
+        bus.connect('message', self.on_message)
 
     def on_sync_message(self, bus, message):
         if message.structure is None:
@@ -105,9 +117,10 @@ class MainWindow:
         inFile = self.inputFile.get_filename()
         outFile = self.outputFile.get_filename()
         if inFile and outFile:
-            self.player.set_property('uri', 'file:///%s'%inFile)
+            #self.player.set_property('uri', 'file:///%s'%inFile)
+            self.input.set_property('location', inFile)
             self.output.set_property('location', outFile)
-            self.player.set_state(gst.STATE_PLAYING)
+            #self.player.set_state(gst.STATE_PLAYING)
             self.recorder.set_state(gst.STATE_PLAYING)
         else:
             print "Either the input or output was blank"
